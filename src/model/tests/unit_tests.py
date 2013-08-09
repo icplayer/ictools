@@ -15,19 +15,18 @@ class LessonTest(unittest.TestCase):
     def testName(self):
         filename = DATA_ROOT + 'lesson1.ic.xml'
         lesson = Lesson(filename)
-        self.assertEqual("Lesson 1", lesson.getName())
+        self.assertEqual("Lesson 1", lesson.name)
 
     def testPageCount(self):
         filename = DATA_ROOT + 'lesson1.ic.xml'
         lesson = Lesson(filename)
-        pages = lesson.getPages()
-        self.assertEqual(10, len(pages))
+        self.assertEqual(10, len(lesson.pages))
 
     def testPageName(self):
         filename = DATA_ROOT + 'lesson1.ic.xml'
         lesson = Lesson(filename)
-        page = lesson.getPages()[0]
-        self.assertEqual('Introduction', page.getName())
+        page = lesson.pages[0]
+        self.assertEqual('Introduction', page.name)
 
 
 class PageTest(unittest.TestCase):
@@ -35,21 +34,21 @@ class PageTest(unittest.TestCase):
     def testModuleCount(self):
         filename = DATA_ROOT + 'page1.xml'
         page = Page(filename)
-        self.assertEqual(3, len(page.getModules()))
+        self.assertEqual(3, len(page.modules))
         
     def testModuleType(self):
         filename = DATA_ROOT + 'page1.xml'
         page = Page(filename)
-        module = page.getModules()[0]
-        self.assertEqual('Text', module.getType())
+        module = page.modules[0]
+        self.assertEqual('Text', module.moduleType)
         
     def testMoreModuleTypes(self):
         filename = DATA_ROOT + 'page2.xml'
         page = Page(filename)
-        modules = page.getModules()
-        self.assertEqual('Shape', modules[1].getType())
-        self.assertEqual('Button', modules[2].getType())
-        self.assertEqual('Addon', modules[3].getType())
+        modules = page.modules
+        self.assertEqual('Shape', modules[1].moduleType)
+        self.assertEqual('Button', modules[2].moduleType)
+        self.assertEqual('Addon', modules[3].moduleType)
 
 
 if __name__ == "__main__":

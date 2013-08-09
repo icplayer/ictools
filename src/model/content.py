@@ -28,10 +28,12 @@ class Lesson:
             page = Page(url, page_node.attributes['name'].value)
             self._pages.append(page)
             
-    def getPages(self):
+    @property
+    def pages(self):
         return self._pages
     
-    def getName(self):
+    @property
+    def name(self):
         return self._root_node.attributes['name'].value
 
 
@@ -41,7 +43,7 @@ class Page:
     '''
     
     def __init__(self, filename, name=''):
-        self._name = name
+        self.name = name
         self._filename = filename
         self._xmldoc = minidom.parse(self._filename)
         self._root_node = self._xmldoc.getElementsByTagName('page')[0]
@@ -55,8 +57,7 @@ class Page:
                 module = Module.create(module_node)
                 self._modules.append(module)
             
-    def getModules(self):
+    @property
+    def modules(self):
         return self._modules
     
-    def getName(self):
-        return self._name

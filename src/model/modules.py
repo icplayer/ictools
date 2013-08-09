@@ -13,7 +13,8 @@ class Module(object):
     def __init__(self, node):
         self.node = node
         
-    def getType(self):
+    @property
+    def moduleType(self):
         return ''
 
     @staticmethod
@@ -27,29 +28,34 @@ class Module(object):
       
 class TextModule(Module):
 
-    def getType(self):
+    @property
+    def moduleType(self):
         return 'Text'
 
 
 class ImageModule(Module):
 
-    def getType(self):
+    @property
+    def moduleType(self):
         return 'Image'
 
 
 class ShapeModule(Module):
 
-    def getType(self):
+    @property
+    def moduleType(self):
         return 'Shape'
 
 
 class ButtonModule(Module):
 
-    def getType(self):
+    @property
+    def moduleType(self):
         return 'Button'
 
 
 class AddonModule(Module):
 
-    def getType(self):
+    @property
+    def moduleType(self):
         return 'Addon'
