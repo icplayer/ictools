@@ -11,7 +11,7 @@ import os.path
 
 class Lesson:
     ''' Lesson model is kept in XML DOM. 
-        It can be safe saved back to the file 
+        It can be safely saved back to the file 
     '''
     
     def __init__(self, filename):
@@ -25,7 +25,7 @@ class Lesson:
         base_path = os.path.dirname(self._filename) + "/" 
         for page_node in  self._xmldoc.getElementsByTagName('page'):
             url = base_path + page_node.attributes['href'].value
-            page = Page(page_node.attributes['name'].value, url)
+            page = Page(url, page_node.attributes['name'].value)
             self._pages.append(page)
             
     def getPages(self):
@@ -37,10 +37,10 @@ class Lesson:
 
 class Page:
     ''' Page model is kept in XML DOM. 
-        It can be safe saved back to the file 
+        It can be safely saved back to the file 
     '''
     
-    def __init__(self, name, filename):
+    def __init__(self, filename, name=''):
         self._name = name
         self._filename = filename
         self._xmldoc = minidom.parse(self._filename)
@@ -52,7 +52,7 @@ class Page:
         module_nodes = self._xmldoc.getElementsByTagName('modules')[0]
         for module_node in  module_nodes.childNodes:
             if module_node.nodeType == Node.ELEMENT_NODE:
-                module = Module(module_node)
+                module = Module.create(module_node)
                 self._modules.append(module)
             
     def getModules(self):
