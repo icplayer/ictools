@@ -4,31 +4,59 @@ Created on 26-11-2013
 
 @author: Krzysztof Langner
 '''
-import shutil
+from model.content import Lesson
 import os
+import shutil
 
 
 TEMPLATES_DIR = os.path.join(os.path.dirname(__file__), 'templates/')
 
 
-def createBookFolders(rootFolder):
+def createBookFolders(rootFolder, lesson):
     if os.path.exists(rootFolder):
         raise Exception("Director %s already exists" % rootFolder)
     os.mkdir(rootFolder)
     createMimeTypeFile(rootFolder, 'application/epub+zip')
     createMetaInfFolder(rootFolder)
+    createContentFolder(rootFolder)
+    createPackageDocument(rootFolder, lesson)
 
 
 def createMimeTypeFile(rootFolder, content):
-    fhandle = open(rootFolder + '/mimetype', 'w')
-    fhandle.write(content)
-    fhandle.close()
+    _writeTemplate(rootFolder, 'mimetype', {})
 
 
 def createMetaInfFolder(rootFolder):
     metaFolder = rootFolder + '/META-INF'
     os.mkdir(metaFolder)
-    shutil.copy(TEMPLATES_DIR + 'container.xml', metaFolder)
+    _writeTemplate(metaFolder, 'container.xml', {})
+
+
+def _writeTemplate(destFolder, templateName, params):
+    ''' Parse template parameters and write contents to given folder 
+        with the same name like template
+    '''
+    templateFile = open(TEMPLATES_DIR + templateName, 'r')
+    content = templateFile.read()
+    templateFile.close()
+    for key,value in params.iteritems():
+        content = content.replace('{{' + key + '}}', value)
+    outFile = open(destFolder + "/" + templateName, 'w')
+    outFile.write(content)
+    outFile.close()
+
+
+def createContentFolder(rootFolder):
+    contentFolder = rootFolder + '/content'
+    os.mkdir(contentFolder)
+    
+    
+def createPackageDocument(rootFolder, lesson):
+    contentFolder = rootFolder + '/content'
+    _writeTemplate(contentFolder, 'book.opf', {'title':lesson.name, 
+                                               'items':'', 
+                                               'itemrefs': '',
+                                               'modified_date': ''})    
 
 
 def cleanBookFolders(rootFolder):
@@ -37,7 +65,9 @@ def cleanBookFolders(rootFolder):
 
 
 if __name__ == '__main__':
-    bookFolder = os.path.join(os.path.dirname(__file__), '../../dist/test')
-    cleanBookFolders(bookFolder)
-    createBookFolders(bookFolder)
+    buildFolder = os.path.join(os.path.dirname(__file__), '../../build/test')
+    sampleFolder = os.path.join(os.path.dirname(__file__), '../../sample/lesson1')
+    lesson = Lesson(sampleFolder + '/lesson1.ic.xml')
+    cleanBookFolders(buildFolder)
+    createBookFolders(buildFolder, lesson)
     print("Book created")
