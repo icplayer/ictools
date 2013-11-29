@@ -37,13 +37,12 @@ def createMetaInfFolder(rootFolder):
 
 
 def copyRuntime(contentFolder):
-    runtimeFolder = contentFolder + '/runtime'
-    os.mkdir(runtimeFolder)
+    shutil.copytree(TEMPLATES_DIR + 'icruntime', contentFolder + '/script')
 
 
 def _writeTemplate(destFilename, templateName, params):
     ''' Parse template parameters and write contents to given folder 
-        with the same name like template
+        with the same name as template
     '''
     templateFile = open(TEMPLATES_DIR + templateName, 'r')
     content = templateFile.read()
@@ -109,10 +108,17 @@ def cleanBookFolders(rootFolder):
         shutil.rmtree(rootFolder)
 
 
+def makeDistribution(buildFolder, zipFilePath):
+    shutil.make_archive(zipFilePath, "zip", buildFolder)
+    shutil.move(zipFilePath + ".zip", zipFilePath)
+
+
 if __name__ == '__main__':
     buildFolder = os.path.join(os.path.dirname(__file__), '../../build/test')
+    distFilePath = os.path.join(os.path.dirname(__file__), '../../dist/test.epub')
     sampleFolder = os.path.join(os.path.dirname(__file__), '../../sample/lesson1')
     lesson = Lesson(sampleFolder + '/lesson1.ic.xml')
     cleanBookFolders(buildFolder)
     createBookFolders(buildFolder, lesson)
+    makeDistribution(buildFolder, distFilePath)
     print("Book created")

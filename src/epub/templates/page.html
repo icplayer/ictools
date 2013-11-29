@@ -2,9 +2,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="../css/minimal.css" />
+        <link rel="stylesheet" type="text/css" href="../css/sandbox.css" />
+        
+		<script src="../script/jquery-1.7.1.min.js"></script>
+        <script src="../script/eventbus.js"></script>
+        <script src="../script/playercontroller.js"></script>
+        <script src="../script/icplayer.js"></script>
+		<script src="../script/modules/libs/textparser.js"></script>        
+        
+        <!-- Include addons  --> 
+        <script src="../script/modules/puzzle/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../script/modules/puzzle/style.css" />        
+        <script src="../script/modules/text/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../script/modules/text/style.css" />
+        <script src="../script/modules/check/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../script/modules/check/style.css" />
     </head>
     <body class="reflow">
-        {{content}}
+        <h3>Interactive text</h3>
+		<div module="Text">
+			<model>
+				<property name="id" value="cloze1"/>
+				<property name="isVisible" value="true"/>
+				<property name="text">
+					This is an editable gap \gap{correct} (correct).
+					This is a drop down \choice{correct|ala|ola}.
+				</property>
+			</model>
+			<div class="puzzle-container">
+			    <div>
+			        <img alt="Image" src="" style="visibility: hidden" />
+			    </div>
+			</div>
+		</div>
+
+		<div module="Check" class="ic_check">
+			<model>
+				<property name="isVisible" value="true"/>
+			</model>
+			<button>Check</button>
+		</div>
     </body>
 </html>
