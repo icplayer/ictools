@@ -19,28 +19,6 @@
         <link rel="stylesheet" type="text/css" href="../script/modules/check/style.css" />
     </head>
     <body class="reflow">
-        <h3>Interactive text</h3>
-		<div module="Text">
-			<model>
-				<property name="id" value="cloze1"/>
-				<property name="isVisible" value="true"/>
-				<property name="text">
-					This is an editable gap \gap{correct} (correct).
-					This is a drop down \choice{correct|ala|ola}.
-				</property>
-			</model>
-			<div class="puzzle-container">
-			    <div>
-			        <img alt="Image" src="" style="visibility: hidden" />
-			    </div>
-			</div>
-		</div>
-
-		<div module="Check" class="ic_check">
-			<model>
-				<property name="isVisible" value="true"/>
-			</model>
-			<button>Check</button>
-		</div>
+        {{content}}
     </body>
 </html>

@@ -4,6 +4,7 @@ Created on 26-11-2013
 
 @author: Krzysztof Langner
 '''
+from epub.converters import ModuleConverter
 from model.content import Lesson
 import os
 import shutil
@@ -24,6 +25,7 @@ def createBookFolders(rootFolder, lesson):
     createCSSFiles(contentFolder, lesson)
     createMediaFiles(contentFolder, lesson)
     createHtmlFiles(contentFolder, lesson)
+    createTocFile(contentFolder, lesson)
 
 
 def createMimeTypeFile(rootFolder, content):
@@ -57,6 +59,9 @@ def _writeTemplate(destFilename, templateName, params):
 def createContentFolder(rootFolder):
     contentFolder = rootFolder + '/content'
     os.mkdir(contentFolder)
+    os.mkdir(contentFolder + '/css')
+    os.mkdir(contentFolder + '/media')
+    os.mkdir(contentFolder + '/xhtml')
     return contentFolder
     
     
@@ -85,22 +90,39 @@ def _createSpineItems(lesson):
 
 
 def createCSSFiles(contentFolder, lesson):
-    cssFolder = contentFolder + '/css'
-    os.mkdir(cssFolder)
+    pass
 
 
 def createMediaFiles(contentFolder, lesson):
-    mediaFolder = contentFolder + '/media'
-    os.mkdir(mediaFolder)
+    pass
 
 
 def createHtmlFiles(contentFolder, lesson):
     htmlFolder = contentFolder + '/xhtml'
-    os.mkdir(htmlFolder)
     for i in range(len(lesson.pages)):
         pageId = "page%d" % (i+1)
         destFile = "%s/%s.html" % (htmlFolder, pageId)
-        _writeTemplate(destFile, 'page.html', {})
+        page = lesson.pages[i]
+        pageContent = convertPage(page)
+        _writeTemplate(destFile, 'page.html', pageContent)
+        
+        
+def convertPage(page):
+    content = ''
+    for module in page.modules:
+        converter = ModuleConverter.create(module)
+        content += converter.html
+    return {'content': content}        
+
+
+def createTocFile(contentFolder, lesson):
+    destFile = contentFolder + '/xhtml/navigation.html'
+    toc = ''
+    for i in range(len(lesson.pages)):
+        pageId = "page%d" % (i+1)
+        page = lesson.pages[i]
+        toc += "<li><a href='" + pageId + ".html'>" + page.name + "</a></li>\n"
+    _writeTemplate(destFile, 'navigation.html', {'toc':toc})
 
     
 def cleanBookFolders(rootFolder):
