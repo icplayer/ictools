@@ -111,7 +111,7 @@ def convertPage(page):
     content = ''
     for module in page.modules:
         converter = ModuleConverter.create(module)
-        content += converter.html
+        content += converter.bodyText
     return {'content': content}        
 
 

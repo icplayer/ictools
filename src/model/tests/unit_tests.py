@@ -51,5 +51,16 @@ class PageTest(unittest.TestCase):
         self.assertEqual('Addon', modules[3].moduleType)
 
 
+class TextModuleTest(unittest.TestCase):
+
+    def testText(self):
+        filename = DATA_ROOT + 'page1.xml'
+        page = Page(filename)
+        properties = page.modules[0].properties
+        self.assertEqual('Text1', properties['id'])
+        self.assertEqual('true', properties['isVisible'])
+        self.assertEqual('Functional Division', properties['text'])
+
+
 if __name__ == "__main__":
     unittest.main()

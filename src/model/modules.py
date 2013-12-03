@@ -16,6 +16,10 @@ class Module(object):
     @property
     def moduleType(self):
         return ''
+        
+    @property
+    def properties(self):
+        return {}
 
     @staticmethod
     def create(node):
@@ -31,6 +35,15 @@ class TextModule(Module):
     @property
     def moduleType(self):
         return 'Text'
+        
+    @property
+    def properties(self):
+        data = {}
+        data['id'] = self.node.attributes['id'].value
+        data['isVisible'] = self.node.attributes['isVisible'].value
+        textNode = self.node.getElementsByTagName('text')[0].childNodes[0]
+        data['text'] = textNode.nodeValue
+        return data
 
 
 class ImageModule(Module):

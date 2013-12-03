@@ -15,7 +15,7 @@ class ModuleConverter(object):
         self.module = module
     
     @property    
-    def html(self):
+    def bodyText(self):
         logging.debug('No converter for module: %s' % self.module.moduleType)
         return ''
 
@@ -26,11 +26,27 @@ class ModuleConverter(object):
             if cls.__name__.lower() == name:
                 return cls(module)
         return ModuleConverter(module)
+    
+    def _replacePropertyValues(self, template, properties):
+        text = template
+        for key,value in properties.iteritems():
+            text = text.replace('{{' + key + '}}', value)
+        return text
       
       
 class TextConverter(ModuleConverter):
 
     @property
-    def html(self):
-        return '<div>Text module</div>\n'
+    def bodyText(self):
+        text = '''
+        <div module="Text">
+            <model>
+                <property name="id" value="{{id}}"/>
+                <property name="isVisible" value="{{isVisible}}"/>
+                <property name="text">{{text}}</property>
+            </model>
+        </div>
+        '''
+        properties = self.module.properties
+        return self._replacePropertyValues(text, properties)
 
