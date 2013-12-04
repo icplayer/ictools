@@ -65,6 +65,15 @@ class ButtonModule(Module):
     @property
     def moduleType(self):
         return 'Button'
+        
+    @property
+    def properties(self):
+        data = {}
+        data['id'] = self.node.attributes['id'].value
+        data['isVisible'] = self.node.attributes['isVisible'].value
+        buttonNode = self.node.getElementsByTagName('button')[0]
+        data['buttonType'] = buttonNode.attributes['type'].value
+        return data
 
 
 class AddonModule(Module):

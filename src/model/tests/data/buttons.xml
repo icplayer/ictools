@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<page layout='pixels' width='0' height='1235'>
+	<modules>
+		<buttonModule id='Button1' left='662' top='1155' width='50' height='49' isVisible='true'>
+			<button type='reset' text='' onclick=''/>
+		</buttonModule>
+		<buttonModule id='Button2' left='599' top='1155' width='50' height='49' isVisible='true'>
+			<button type='checkAnswers' text='' onclick=''/>
+		</buttonModule>
+	</modules>
+</page>

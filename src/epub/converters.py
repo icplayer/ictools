@@ -16,7 +16,7 @@ class ModuleConverter(object):
     
     @property    
     def bodyText(self):
-        logging.debug('No converter for module: %s' % self.module.moduleType)
+        logging.warn('%s - no converter' % self.module.moduleType)
         return ''
 
     @staticmethod
@@ -49,4 +49,29 @@ class TextConverter(ModuleConverter):
         '''
         properties = self.module.properties
         return self._replacePropertyValues(text, properties)
+      
+      
+class ButtonConverter(ModuleConverter):
+
+    @property
+    def bodyText(self):
+        if self.module.properties['buttonType'] == 'checkAnswers':
+            text = '''
+            <div module="Check" class="ic_check">
+            <model>
+                <property name="isVisible" value="true"/>
+            </model>
+            <button>Check</button>
+        </div>
+            '''
+        else:
+            text = '''
+            <div module="Reset" class="ic_reset">
+                <model>
+                    <property name="isVisible" value="true"/>
+                </model>
+                <button>Reset</button>
+            </div>
+            '''
+        return self._replacePropertyValues(text, self.module.properties)
 

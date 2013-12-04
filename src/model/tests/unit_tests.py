@@ -62,5 +62,16 @@ class TextModuleTest(unittest.TestCase):
         self.assertEqual('Functional Division', properties['text'])
 
 
+class ButtonModuleTest(unittest.TestCase):
+
+    def testButtonType(self):
+        filename = DATA_ROOT + 'buttons.xml'
+        page = Page(filename)
+        resetButton = page.modules[0].properties
+        checkAnswersButton = page.modules[1].properties
+        self.assertEqual('reset', resetButton['buttonType'])
+        self.assertEqual('checkAnswers', checkAnswersButton['buttonType'])
+
+
 if __name__ == "__main__":
     unittest.main()
