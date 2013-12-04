@@ -5,6 +5,7 @@
     <meta property="dcterms:modified">{{modified_date}}</meta>
   </metadata>
   <manifest>
+  	<item id="css" href="css/lesson.css" media-type="text/css"/>
   	<item id="navigation" href="xhtml/navigation.html" media-type="application/xhtml+xml" properties="nav"/>
   	{{items}}
   </manifest>
