@@ -90,7 +90,8 @@ def _createSpineItems(lesson):
 
 
 def createCSSFiles(contentFolder, lesson):
-    pass
+    destFile = contentFolder + '/css/lesson.css'
+    _writeTemplate(destFile, 'lesson.css', {})
 
 
 def createMediaFiles(contentFolder, lesson):
