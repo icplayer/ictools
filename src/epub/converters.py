@@ -71,24 +71,21 @@ class ChoiceConverter(ModuleConverter):
                 <property name="isMulti" value="{{isMulti}}"/>
                 <property name="options" type="list">
                     <items>
-                        <item>
-                            <property name="score" value="0"/>
-                            <property name="text">This is wrong answer A</property>
-                        </item>
-                        <item>
-                            <property name="score" value="1"/>
-                            <property name="text">This is correct answer B</property>
-                        </item>
-                        <item>
-                            <property name="score" value="0"/>
-                            <property name="text">This is wrong answer C</property>
-                        </item>
+                    {{items}}
                     </items>
                 </property>
             </model>
         </div>
         '''
         properties = self.module.properties
+        items = ''
+        for options in properties['options']:
+            items += """<item>
+                            <property name='score' value='%d'/>
+                            <property name='text'>%s</property>
+                        </item>\n""" % (options['value'], options['text'])
+        properties['items'] = items
+        del properties['options']
         return self._replacePropertyValues(text, properties)
       
       
