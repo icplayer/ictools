@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<page layout='pixels' width='0' height='1235'>
+	<modules>
+		<choiceModule id='Choice1' left='10' top='10' width='290' height='209' right='0' bottom='0' isVisible='true' isLocked='false'>
+			<layout type='LTWH'><left relative='' property='left'/><top relative='' property='top'/><right relative='' property='right'/><bottom relative='' property='bottom'/></layout>
+			<choice isMulti='true' isDisabled='false' isActivity='true'/>
+			<options>
+				<option value='0'><text><![CDATA[First a wrong option]]></text><feedback></feedback></option>
+				<option value='1'><text><![CDATA[This is a correct answer]]></text><feedback></feedback></option>
+				<option value='0'><text><![CDATA[Another wrong option]]></text><feedback></feedback></option>
+			</options>
+		</choiceModule>
+	</modules>
+</page>

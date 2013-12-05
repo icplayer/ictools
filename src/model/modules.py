@@ -46,6 +46,28 @@ class TextModule(Module):
         return data
 
 
+class ChoiceModule(Module):
+
+    @property
+    def moduleType(self):
+        return 'Choice'
+        
+    @property
+    def properties(self):
+        data = {}
+        data['id'] = self.node.attributes['id'].value
+        data['isVisible'] = self.node.attributes['isVisible'].value
+        choiceNode = self.node.getElementsByTagName('choice')[0]
+        data['isMulti'] = choiceNode.attributes['isMulti'].value
+        optionNodes = self.node.getElementsByTagName('option')
+        options = []
+        for node in optionNodes:
+            options.append({'value':int(node.attributes['value'].value), 
+                            'text':node.getElementsByTagName('text')[0].childNodes[0].nodeValue})
+        data['options'] = options
+        return data
+
+
 class ImageModule(Module):
 
     @property

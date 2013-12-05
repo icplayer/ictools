@@ -34,23 +34,6 @@ class ModuleConverter(object):
         return text
       
       
-class TextConverter(ModuleConverter):
-
-    @property
-    def bodyText(self):
-        text = '''
-        <div module="Text">
-            <model>
-                <property name="id" value="{{id}}"/>
-                <property name="isVisible" value="{{isVisible}}"/>
-                <property name="text">{{text}}</property>
-            </model>
-        </div>
-        '''
-        properties = self.module.properties
-        return self._replacePropertyValues(text, properties)
-      
-      
 class ButtonConverter(ModuleConverter):
 
     @property
@@ -74,4 +57,54 @@ class ButtonConverter(ModuleConverter):
             </div>
             '''
         return self._replacePropertyValues(text, self.module.properties)
+      
+      
+class ChoiceConverter(ModuleConverter):
+
+    @property
+    def bodyText(self):
+        text = '''
+        <div module="Choice">
+            <model>
+                <property name="id" value="{{id}}"/>
+                <property name="isVisible" value="{{isVisible}}"/>
+                <property name="isMulti" value="{{isMulti}}"/>
+                <property name="options" type="list">
+                    <items>
+                        <item>
+                            <property name="score" value="0"/>
+                            <property name="text">This is wrong answer A</property>
+                        </item>
+                        <item>
+                            <property name="score" value="1"/>
+                            <property name="text">This is correct answer B</property>
+                        </item>
+                        <item>
+                            <property name="score" value="0"/>
+                            <property name="text">This is wrong answer C</property>
+                        </item>
+                    </items>
+                </property>
+            </model>
+        </div>
+        '''
+        properties = self.module.properties
+        return self._replacePropertyValues(text, properties)
+      
+      
+class TextConverter(ModuleConverter):
+
+    @property
+    def bodyText(self):
+        text = '''
+        <div module="Text">
+            <model>
+                <property name="id" value="{{id}}"/>
+                <property name="isVisible" value="{{isVisible}}"/>
+                <property name="text">{{text}}</property>
+            </model>
+        </div>
+        '''
+        properties = self.module.properties
+        return self._replacePropertyValues(text, properties)
 

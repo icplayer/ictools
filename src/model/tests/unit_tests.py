@@ -20,7 +20,7 @@ class LessonTest(unittest.TestCase):
     def testPageCount(self):
         filename = DATA_ROOT + 'lesson1.ic.xml'
         lesson = Lesson(filename)
-        self.assertEqual(10, len(lesson.pages))
+        self.assertEqual(6, len(lesson.pages))
 
     def testPageName(self):
         filename = DATA_ROOT + 'lesson1.ic.xml'
@@ -71,6 +71,31 @@ class ButtonModuleTest(unittest.TestCase):
         checkAnswersButton = page.modules[1].properties
         self.assertEqual('reset', resetButton['buttonType'])
         self.assertEqual('checkAnswers', checkAnswersButton['buttonType'])
+
+
+class ChoiceModuleTest(unittest.TestCase):
+
+    def testProperties(self):
+        filename = DATA_ROOT + 'choice.xml'
+        page = Page(filename)
+        properties = page.modules[0].properties
+        self.assertEqual('Choice1', properties['id'])
+        self.assertEqual('true', properties['isVisible'])
+        self.assertEqual('true', properties['isMulti'])
+
+    def testOptions(self):
+        filename = DATA_ROOT + 'choice.xml'
+        page = Page(filename)
+        properties = page.modules[0].properties
+        self.assertEqual(3, len(properties['options']))
+
+    def testCorrectOption(self):
+        filename = DATA_ROOT + 'choice.xml'
+        page = Page(filename)
+        properties = page.modules[0].properties
+        option = properties['options'][1]
+        self.assertEqual(1, option['value'])
+        self.assertEqual('This is a correct answer', option['text'])
 
 
 if __name__ == "__main__":
