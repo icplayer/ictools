@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="105px" height="220px" viewBox="-0.74 -0.001 105 220"
+	 overflow="visible" enable-background="new -0.74 -0.001 105 220" xml:space="preserve">
+<defs>
+</defs>
+<path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M104.814,191.725l-12-15.91
+	c-1.11-1.686-7.114-10.344-12.745-10.344h-0.52c4.912,0,10.681,8.029,11.947,9.947l12,15.91l-12,16.199
+	c-2.058,2.818-7.035,9.947-11.947,9.947H10.442c-5.494,0-9.945-4.453-9.945-9.947v-32.109c0-1.983,0.587-3.826,1.587-5.378
+	c-1.295,1.798-2.067,3.996-2.067,6.376v32.109c0,6.037,4.91,10.947,10.945,10.947h69.107c5.226,0,10.136-6.756,12.496-10.002
+	l0.259-0.355l11.996-16.193C105.084,192.567,105.082,192.079,104.814,191.725z"/>
+<path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M80.073,164.475c5.225,0,10.135-6.756,12.496-10.002
+	l0.258-0.355l11.996-16.193c0.264-0.355,0.262-0.844-0.006-1.197l-12-15.91c-1.109-1.686-7.113-10.344-12.744-10.344H10.964
+	c-6.037,0-10.947,4.911-10.947,10.946v32.109c0,6.037,4.91,10.947,10.947,10.947H80.073z"/>
+<path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M80.073,109.476c5.225,0,10.135-6.756,12.496-10.002
+	l0.258-0.355l11.996-16.193c0.264-0.356,0.262-0.844-0.006-1.198l-12-15.91c-1.109-1.685-7.113-10.344-12.744-10.344H10.964
+	c-6.037,0-10.947,4.91-10.947,10.946v32.109c0,6.036,4.91,10.947,10.947,10.947H80.073z"/>
+<path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M80.073,54.5c5.225,0,10.135-6.756,12.496-10.002
+	l0.258-0.355l11.996-16.193c0.264-0.356,0.262-0.844-0.006-1.198l-12-15.91C91.708,9.156,85.704,0.497,80.073,0.497H10.964
+	c-6.037,0-10.947,4.91-10.947,10.946v32.109c0,6.036,4.91,10.947,10.947,10.947H80.073z"/>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="52.0166" y1="0.2251" x2="52.0166" y2="52.5614">
+	<stop  offset="0" style="stop-color:#BFDAF0"/>
+	<stop  offset="0.5" style="stop-color:#8BBFE6"/>
+	<stop  offset="0.51" style="stop-color:#63A8DD"/>
+	<stop  offset="1" style="stop-color:#63A8DD"/>
+</linearGradient>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_1_)" stroke="#145784" stroke-width="0.9946" stroke-miterlimit="10" d="
+	M91.519,42.553C89.46,45.372,84.483,52.5,79.571,52.5H10.462c-5.494,0-9.947-4.453-9.947-9.947V10.444
+	c0-5.493,4.453-9.946,9.947-9.946h69.109c4.912,0,10.68,8.029,11.947,9.946l12,15.911L91.519,42.553z"/>
+<linearGradient id="SVGID_10_" gradientUnits="userSpaceOnUse" x1="52.0166" y1="55.2007" x2="52.0166" y2="107.5369">
+	<stop  offset="0" style="stop-color:#80B2DD"/>
+	<stop  offset="0.5" style="stop-color:#64A2D5"/>
+	<stop  offset="0.51" style="stop-color:#5489CD"/>
+	<stop  offset="1" style="stop-color:#5891D0"/>
+</linearGradient>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_10_)" stroke="#145784" stroke-miterlimit="10" d="M91.519,97.529
+	c-2.059,2.818-7.035,9.947-11.947,9.947H10.462c-5.494,0-9.947-4.453-9.947-9.947V65.419c0-5.493,4.453-9.946,9.947-9.946h69.109
+	c4.912,0,10.68,8.029,11.947,9.946l12,15.911L91.519,97.529z"/>
+<linearGradient id="SVGID_11_" gradientUnits="userSpaceOnUse" x1="52.0166" y1="110.2007" x2="52.0166" y2="162.5374">
+	<stop  offset="0" style="stop-color:#799FC6"/>
+	<stop  offset="0.5" style="stop-color:#4A7BB0"/>
+	<stop  offset="0.51" style="stop-color:#3A62A0"/>
+	<stop  offset="1" style="stop-color:#3F6BA6"/>
+</linearGradient>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_11_)" stroke="#145784" stroke-miterlimit="10" d="M91.519,152.529
+	c-2.059,2.818-7.035,9.947-11.947,9.947H10.462c-5.494,0-9.947-4.453-9.947-9.947v-32.109c0-5.493,4.453-9.946,9.947-9.946h69.109
+	c4.912,0,10.68,8.029,11.947,9.946l12,15.911L91.519,152.529z"/>
+<path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#575756" stroke-width="0.9946" stroke-miterlimit="10" d="
+	M91.497,207.528c-2.058,2.818-7.035,9.947-11.947,9.947H10.442c-5.494,0-9.945-4.453-9.945-9.947v-32.109
+	c0-5.494,4.451-9.947,9.945-9.947H79.55c4.912,0,10.681,8.029,11.947,9.947l12,15.91L91.497,207.528z"/>
+</svg>

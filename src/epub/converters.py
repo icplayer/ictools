@@ -40,7 +40,7 @@ class ButtonConverter(ModuleConverter):
     def bodyText(self):
         if self.module.properties['buttonType'] == 'checkAnswers':
             text = '''
-            <div module="Check" class="ic_check">
+            <div module="Check" class="ic_check {{class}}">
             <model>
                 <property name="isVisible" value="true"/>
             </model>
@@ -64,7 +64,7 @@ class ChoiceConverter(ModuleConverter):
     @property
     def bodyText(self):
         text = '''
-        <div module="Choice">
+        <div module="Choice" class="ic_choice {{class}}">
             <model>
                 <property name="id" value="{{id}}"/>
                 <property name="isVisible" value="{{isVisible}}"/>
@@ -94,7 +94,7 @@ class TextConverter(ModuleConverter):
     @property
     def bodyText(self):
         text = '''
-        <div module="Text">
+        <div module="Text" class="{{class}}">
             <model>
                 <property name="id" value="{{id}}"/>
                 <property name="isVisible" value="{{isVisible}}"/>

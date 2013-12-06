@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <page layout='pixels' width='0' height='846' style=' '>
     <modules>
-        <textModule id='Text1' left='20' top='399' width='682' height='317' isVisible='true' style=' ' class='text_bulletedLinkText_auto'>
+        <textModule id='Text1' left='20' top='399' width='682' height='317' isVisible='true' style=' ' class='text_activity'>
             <text draggable='false' gapWidth='0' isActivity='true' isIgnorePunctuation='false' isDisabled='false' isCaseSensitive='false'><![CDATA[Functional Division]]></text>
         </textModule>
         <textModule id='Text3' left='21' top='22' width='675' height='133' isVisible='true' class='text_firstFrame_auto'><text draggable='false' gapWidth='0' isActivity='true' isIgnorePunctuation='false' isDisabled='false' isCaseSensitive='false'><![CDATA[<font style="font-family: Verdana; color: black;" size="5">In this lesson, you will learn</font><font style="font-family: Verdana; color: black;" size="5"> to:</font><ul><li><span id="result_box" class="short_text" lang="en"><span class="hps">describe the hierarchy in the peripheral nervous system (PNS).</span></span></li><li><span id="result_box" class="short_text" lang="en"><span class="hps">define and describe the divisions of the autonomic nervous system (ANS).<br></span></span></li><li><span id="result_box" class="short_text" lang="en"><span class="hps">explain the opposing (antagonistic) actions within the PNS, its motor system, and the ANS.</span></span></li></ul>]]></text></textModule>

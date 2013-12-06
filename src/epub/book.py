@@ -13,7 +13,7 @@ import shutil
 TEMPLATES_DIR = os.path.join(os.path.dirname(__file__), 'templates/')
 
 
-def createBookFolders(rootFolder, lesson):
+def createBookFolders(rootFolder, lessonFolder, lesson):
     if os.path.exists(rootFolder):
         raise Exception("Director %s already exists" % rootFolder)
     os.mkdir(rootFolder)
@@ -23,7 +23,7 @@ def createBookFolders(rootFolder, lesson):
     createPackageDocument(contentFolder, lesson)
     copyRuntime(contentFolder)
     createCSSFiles(contentFolder, lesson)
-    createMediaFiles(contentFolder, lesson)
+    createMediaFiles(contentFolder, lessonFolder)
     createHtmlFiles(contentFolder, lesson)
     createTocFile(contentFolder, lesson)
 
@@ -91,11 +91,11 @@ def _createSpineItems(lesson):
 
 def createCSSFiles(contentFolder, lesson):
     destFile = contentFolder + '/css/lesson.css'
-    _writeTemplate(destFile, 'lesson.css', {})
+    _writeTemplate(destFile, 'lesson.css', {'content':lesson.style})
 
 
-def createMediaFiles(contentFolder, lesson):
-    pass
+def createMediaFiles(contentFolder, lessonFolder):
+    shutil.copytree(lessonFolder + '/resources', contentFolder + '/resources')
 
 
 def createHtmlFiles(contentFolder, lesson):
@@ -139,9 +139,9 @@ def makeDistribution(buildFolder, zipFilePath):
 if __name__ == '__main__':
     buildFolder = os.path.join(os.path.dirname(__file__), '../../build/test')
     distFilePath = os.path.join(os.path.dirname(__file__), '../../dist/test.epub')
-    sampleFolder = os.path.join(os.path.dirname(__file__), '../../sample/lesson1/pages')
-    lesson = Lesson(sampleFolder + '/main.xml')
+    lessonFolder = os.path.join(os.path.dirname(__file__), '../../sample/lesson1')
+    lesson = Lesson(lessonFolder + '/pages/main.xml')
     cleanBookFolders(buildFolder)
-    createBookFolders(buildFolder, lesson)
+    createBookFolders(buildFolder, lessonFolder, lesson)
     makeDistribution(buildFolder, distFilePath)
     print("Book created")

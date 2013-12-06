@@ -19,7 +19,16 @@ class Module(object):
         
     @property
     def properties(self):
-        return {}
+        data = {}
+        data['id'] = self.node.attributes['id'].value
+        data['isVisible'] = self.node.attributes['isVisible'].value
+        data['class'] = self._getAttribute('class', '')
+        return data
+    
+    def _getAttribute(self, name, defaultValue):
+        if self.node.hasAttribute(name):
+            return self.node.attributes[name].value
+        return defaultValue
 
     @staticmethod
     def create(node):
@@ -38,9 +47,7 @@ class TextModule(Module):
         
     @property
     def properties(self):
-        data = {}
-        data['id'] = self.node.attributes['id'].value
-        data['isVisible'] = self.node.attributes['isVisible'].value
+        data = Module.properties.fget(self)
         textNode = self.node.getElementsByTagName('text')[0].childNodes[0]
         data['text'] = textNode.nodeValue
         return data
@@ -54,9 +61,7 @@ class ChoiceModule(Module):
         
     @property
     def properties(self):
-        data = {}
-        data['id'] = self.node.attributes['id'].value
-        data['isVisible'] = self.node.attributes['isVisible'].value
+        data = Module.properties.fget(self)
         choiceNode = self.node.getElementsByTagName('choice')[0]
         data['isMulti'] = choiceNode.attributes['isMulti'].value
         optionNodes = self.node.getElementsByTagName('option')
@@ -90,9 +95,7 @@ class ButtonModule(Module):
         
     @property
     def properties(self):
-        data = {}
-        data['id'] = self.node.attributes['id'].value
-        data['isVisible'] = self.node.attributes['isVisible'].value
+        data = Module.properties.fget(self)
         buttonNode = self.node.getElementsByTagName('button')[0]
         data['buttonType'] = buttonNode.attributes['type'].value
         return data

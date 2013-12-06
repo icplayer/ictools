@@ -17,6 +17,11 @@ class LessonTest(unittest.TestCase):
         lesson = Lesson(filename)
         self.assertEqual("Lesson 1", lesson.name)
 
+    def testStyle(self):
+        filename = DATA_ROOT + 'lesson1.ic.xml'
+        lesson = Lesson(filename)
+        self.assertEqual(".myclass{}", lesson.style)
+
     def testPageCount(self):
         filename = DATA_ROOT + 'lesson1.ic.xml'
         lesson = Lesson(filename)
@@ -59,6 +64,7 @@ class TextModuleTest(unittest.TestCase):
         properties = page.modules[0].properties
         self.assertEqual('Text1', properties['id'])
         self.assertEqual('true', properties['isVisible'])
+        self.assertEqual('text_activity', properties['class'])
         self.assertEqual('Functional Division', properties['text'])
 
 

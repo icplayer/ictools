@@ -35,6 +35,11 @@ class Lesson:
     @property
     def name(self):
         return self._root_node.attributes['name'].value
+    
+    @property
+    def style(self):
+        styleNode = self._xmldoc.getElementsByTagName('style')[0].childNodes[0]
+        return styleNode.nodeValue
 
 
 class Page:

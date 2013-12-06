@@ -4,8 +4,7 @@
 	</metadata>
 	<addons>
 	</addons>
-	<style>
-    </style>
+	<style>.myclass{}</style>
 	<pages>
 		<page href="page1.xml" id="wurHnl" name="Introduction" preview="" reportable="false"/>
 		<page href="page2.xml" id="IS3eYy" name="Functional Division of the Peripheral Nervous System" preview="" reportable="true"/>
