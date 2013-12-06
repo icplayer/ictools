@@ -22,6 +22,8 @@ class Module(object):
         data = {}
         data['id'] = self.node.attributes['id'].value
         data['isVisible'] = self.node.attributes['isVisible'].value
+        data['width'] = self.node.attributes['width'].value
+        data['height'] = self.node.attributes['height'].value
         data['class'] = self._getAttribute('class', '')
         return data
     
@@ -78,6 +80,13 @@ class ImageModule(Module):
     @property
     def moduleType(self):
         return 'Image'
+        
+    @property
+    def properties(self):
+        data = Module.properties.fget(self)
+        choiceNode = self.node.getElementsByTagName('image')[0]
+        data['src'] = choiceNode.attributes['src'].value
+        return data
 
 
 class ShapeModule(Module):

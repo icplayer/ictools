@@ -39,7 +39,7 @@ class PageTest(unittest.TestCase):
     def testModuleCount(self):
         filename = DATA_ROOT + 'page1.xml'
         page = Page(filename)
-        self.assertEqual(3, len(page.modules))
+        self.assertEqual(4, len(page.modules))
         
     def testModuleType(self):
         filename = DATA_ROOT + 'page1.xml'
@@ -102,6 +102,19 @@ class ChoiceModuleTest(unittest.TestCase):
         option = properties['options'][1]
         self.assertEqual(1, option['value'])
         self.assertEqual('This is a correct answer', option['text'])
+
+
+class ImageModuleTest(unittest.TestCase):
+
+    def testProperties(self):
+        filename = DATA_ROOT + 'page1.xml'
+        page = Page(filename)
+        properties = page.modules[3].properties
+        self.assertEqual('Image1', properties['id'])
+        self.assertEqual('true', properties['isVisible'])
+        self.assertEqual('395', properties['width'])
+        self.assertEqual('280', properties['height'])
+        self.assertEqual('../resources/1817685.jpg', properties['src'])
 
 
 if __name__ == "__main__":

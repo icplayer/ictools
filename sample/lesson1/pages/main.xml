@@ -83,10 +83,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cc4ec', end
 }
 
 /* PICTURE */ .image {
-	position: absolute;
+	//position: absolute;
 	border: 10px solid white;
 	background: rgba(255,255,255,0.7);
-	box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.5);
+	margin:20px;
 }
 
 /* VIDEO */ .video-container {
