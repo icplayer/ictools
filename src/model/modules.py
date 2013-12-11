@@ -26,6 +26,11 @@ class Module(object):
         data['height'] = self.node.attributes['height'].value
         data['class'] = self._getAttribute('class', '')
         return data
+        
+    @property
+    def text(self):
+        ''' Return all text content from module ''' 
+        return ''
     
     def _getAttribute(self, name, defaultValue):
         if self.node.hasAttribute(name):
@@ -48,11 +53,18 @@ class TextModule(Module):
         return 'Text'
         
     @property
+    def text(self):
+        return self._getTextProperty() + " "
+        
+    @property
     def properties(self):
         data = Module.properties.fget(self)
-        textNode = self.node.getElementsByTagName('text')[0].childNodes[0]
-        data['text'] = textNode.nodeValue
+        data['text'] = self._getTextProperty()
         return data
+        
+    def _getTextProperty(self):
+        textNode = self.node.getElementsByTagName('text')[0].childNodes[0]
+        return textNode.nodeValue
 
 
 class ChoiceModule(Module):

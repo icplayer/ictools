@@ -54,6 +54,13 @@ class PageTest(unittest.TestCase):
         self.assertEqual('Shape', modules[1].moduleType)
         self.assertEqual('Button', modules[2].moduleType)
         self.assertEqual('Addon', modules[3].moduleType)
+        
+    def testTextTitle(self):
+        lesson = Lesson(DATA_ROOT + 'lesson1.ic.xml')
+        page = lesson.pages[0]
+        print(page.text)
+        self.assertTrue(page.text.find('Introduction') >= 0)
+        self.assertTrue(page.text.find('Division') > 0)
 
 
 class TextModuleTest(unittest.TestCase):

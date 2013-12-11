@@ -65,4 +65,12 @@ class Page:
     @property
     def modules(self):
         return self._modules
+        
+    @property
+    def text(self):
+        ''' Return all text content from module '''
+        text =  self.name + ". "
+        for module in self.modules:
+            text += module.text
+        return text
     
