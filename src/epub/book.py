@@ -139,7 +139,7 @@ def makeDistribution(buildFolder, zipFilePath):
 if __name__ == '__main__':
     buildFolder = os.path.join(os.path.dirname(__file__), '../../build/test')
     distFilePath = os.path.join(os.path.dirname(__file__), '../../dist/test.epub')
-    lessonFolder = os.path.join(os.path.dirname(__file__), '../../sample/lesson1')
+    lessonFolder = os.path.join(os.path.dirname(__file__), '../../mauthor/lesson1')
     lesson = Lesson(lessonFolder + '/pages/main.xml')
     cleanBookFolders(buildFolder)
     createBookFolders(buildFolder, lessonFolder, lesson)
