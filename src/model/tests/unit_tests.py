@@ -6,6 +6,7 @@ Created on 05-08-2013
 from model.content import Lesson, Page
 import os.path
 import unittest
+from model.text import fixHtml
 
 DATA_ROOT = os.path.join(os.path.dirname(__file__), 'data/')
 
@@ -74,6 +75,12 @@ class TextModuleTest(unittest.TestCase):
         self.assertEqual('text_activity', properties['class'])
         self.assertEqual('Functional Division', properties['text'])
 
+    def testTextFormat(self):
+        filename = DATA_ROOT + 'text.xml'
+        page = Page(filename)
+        properties = page.modules[0].properties
+        self.assertEqual('Functional <br/> Division', properties['text'])
+
 
 class ButtonModuleTest(unittest.TestCase):
 
@@ -122,6 +129,19 @@ class ImageModuleTest(unittest.TestCase):
         self.assertEqual('395', properties['width'])
         self.assertEqual('280', properties['height'])
         self.assertEqual('../resources/1817685.jpg', properties['src'])
+
+
+class TextUtilsTest(unittest.TestCase):
+
+    def testHtmlBr(self):
+        text = "This is <br> text"
+        html = fixHtml(text)
+        self.assertEqual("This is <br/> text", html)
+
+    def testHtmlNbsp(self):
+        text = "This is&nbsp;text"
+        html = fixHtml(text)
+        self.assertEqual("This is text", html)
 
 
 if __name__ == "__main__":

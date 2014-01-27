@@ -4,6 +4,7 @@ Created on 05-08-2013
 
 @author: Krzysztof Langner
 '''
+from model.text import fixHtml
 
     
 class Module(object):
@@ -64,7 +65,8 @@ class TextModule(Module):
         
     def _getTextProperty(self):
         textNode = self.node.getElementsByTagName('text')[0].childNodes[0]
-        return textNode.nodeValue
+        xhtml = fixHtml(textNode.nodeValue)
+        return xhtml
 
 
 class ChoiceModule(Module):
