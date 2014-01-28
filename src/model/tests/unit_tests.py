@@ -143,6 +143,11 @@ class TextUtilsTest(unittest.TestCase):
         html = fixHtml(text)
         self.assertEqual("This is text", html)
 
+    def testInlineChoice(self):
+        text = "This {{2:blue|yellow|red}} inline {{1:enim|minim|ad}} choice"
+        html = fixHtml(text)
+        self.assertEqual("This \\choice{blue|yellow|red} inline \\choice{enim|minim|ad} choice", html)
+
 
 if __name__ == "__main__":
     unittest.main()
