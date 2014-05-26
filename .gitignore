@@ -3,3 +3,4 @@
 /build
 /icruntime
 /mauthor
+*.pyc
