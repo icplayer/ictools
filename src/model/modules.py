@@ -82,9 +82,12 @@ class ChoiceModule(Module):
         data['isMulti'] = choiceNode.attributes['isMulti'].value
         optionNodes = self.node.getElementsByTagName('option')
         options = []
+        index = 1
         for node in optionNodes:
-            options.append({'value':int(node.attributes['value'].value), 
-                            'text':node.getElementsByTagName('text')[0].childNodes[0].nodeValue})
+            options.append({ 'value':int(node.attributes['value'].value)
+                           , 'text':node.getElementsByTagName('text')[0].childNodes[0].nodeValue
+                           , "id": "%s_%d" % (data["id"], index) })
+            index += 1
         data['options'] = options
         return data
 

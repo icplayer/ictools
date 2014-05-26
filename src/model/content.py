@@ -49,6 +49,7 @@ class Page:
     
     def __init__(self, filename, name=''):
         self.name = name
+        self.id = name.replace(" ", "_")
         self._filename = filename
         self._xmldoc = minidom.parse(self._filename)
         self._root_node = self._xmldoc.getElementsByTagName('page')[0]
