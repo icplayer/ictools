@@ -17,10 +17,12 @@ TEMPLATES_DIR = os.path.join(os.path.dirname(__file__), 'templates/')
 
 def convert(lessonPath, dstFolder):
     lesson = Lesson(lessonPath)
-    _prepareDstFolders(dstFolder)
-    _createAssessment(lesson, dstFolder)
+    lessonFolder = dstFolder + lesson.name + "/"
+    _prepareDstFolders(lessonFolder)
+    _createAssessment(lesson, lessonFolder)
     for page in lesson.pages:
-        _convertPage(page, dstFolder)
+        _convertPage(page, lessonFolder)
+    _makeDistribution(lessonFolder, dstFolder + lesson.name)
 
 
 def _prepareDstFolders(dstFolder):
@@ -28,6 +30,7 @@ def _prepareDstFolders(dstFolder):
     if os.path.exists(dstFolder):
         shutil.rmtree(dstFolder)
     os.mkdir(dstFolder)
+    os.mkdir(dstFolder+"res")
 
 
 def _createAssessment(lesson, dstFolder):
@@ -50,6 +53,7 @@ def _convertPage(page, dstFolder):
     params["correctResponses"] = _convertCorrectResponses(page)
     params["modules"] = _convertModules(page)
     writeToFile(TEMPLATES_DIR+"item.xml", dstFolder+pageId+".xml", params)
+    _copyResources(page, dstFolder + "res/")    
     
 def _convertCorrectResponses(page):
     content = ""
@@ -63,8 +67,20 @@ def _convertModules(page):
     content = ""
     for module in page.modules:
         converter = ModuleConverter.create(module)
-        content += converter.bodyText
+        content += converter.bodyText("res")
     return content
+    
+def _copyResources(page, dst):
+    src = os.path.normpath(os.path.dirname(page.url)) + "/"
+    for module in page.modules:
+        converter = ModuleConverter.create(module)
+        for res in converter.resources:
+            filename = os.path.basename(res)
+            shutil.copy(src + res, dst+filename)
+
+def _makeDistribution(buildFolder, zipFilePath):
+    shutil.make_archive(zipFilePath, "zip", buildFolder)
+#     shutil.move(zipFilePath + ".zip", zipFilePath)
 
 
 if __name__ == '__main__':

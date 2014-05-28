@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 '''
-Created on 02-12-2013
+Created on 2014-05-26
 
 @author: Krzysztof Langner
 '''
+
 
 
 class ModuleConverter(object):
@@ -13,13 +14,17 @@ class ModuleConverter(object):
     def __init__(self, module):
         self.module = module
     
-    @property    
-    def bodyText(self):
+    def bodyText(self, resPath):
         return ""
 
     @property    
     def correctResponses(self):
         """ List of correct responses"""
+        return []
+
+    @property    
+    def resources(self):
+        """ List of resource urls which should be included in the package"""
         return []
 
     @staticmethod
@@ -47,8 +52,7 @@ class ChoiceConverter(ModuleConverter):
                 correct.append(options['id'])
         return correct
 
-    @property
-    def bodyText(self):
+    def bodyText(self, resPath):
         text = '''
         <choiceInteraction responseIdentifier="RESPONSE" shuffle="false" maxChoices="{{maxChoice}}">
             {{items}}
@@ -69,19 +73,23 @@ class ChoiceConverter(ModuleConverter):
       
 class ImageConverter(ModuleConverter):
 
-    @property
-    def bodyText(self):
+    def bodyText(self, resPath):
         text = '''
         <img class="{{class}}" src="{{src}}" width="{{width}}" height="{{height}}" />
         '''
         properties = self.module.properties
+        properties["src"] = resPath + "/" + properties["src"].split("/")[-1] 
         return self._replacePropertyValues(text, properties)
+
+    @property    
+    def resources(self):
+        properties = self.module.properties
+        return [properties["src"]]
       
       
 class TextConverter(ModuleConverter):
 
-    @property
-    def bodyText(self):
+    def bodyText(self, resPath):
         text = '''
         <div>
             {{text}}

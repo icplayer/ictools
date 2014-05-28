@@ -64,6 +64,10 @@ class Page:
                 self._modules.append(module)
             
     @property
+    def url(self):
+        return self._filename
+        
+    @property
     def modules(self):
         return self._modules
         
