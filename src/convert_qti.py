@@ -15,4 +15,8 @@ if __name__ == '__main__':
         print "syntax:\n convert_qti <lesson_path> <destination_path>\n"
         sys.exit()
 
-    convert(sys.argv[1], sys.argv[2])
+    lesson_path = sys.argv[1]
+    dest_path = sys.argv[2] 
+    if not dest_path.endswith("/"):
+        dest_path += "/"
+    convert(lesson_path, dest_path)

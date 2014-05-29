@@ -29,7 +29,7 @@ def _prepareDstFolders(dstFolder):
     ''' Prepare folders for building qti '''
     if os.path.exists(dstFolder):
         shutil.rmtree(dstFolder)
-    os.mkdir(dstFolder)
+    os.makedirs(dstFolder)
     os.mkdir(dstFolder+"res")
 
 
