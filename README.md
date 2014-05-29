@@ -7,7 +7,6 @@ Python tools for processing icplayer files. Contains the following packages:
 ## Installation
 * Download code using git or 'Download ZIP' button
 * Extract to folder _ictools_
-* Download SCORM package with lesson and extract it to folder _lesson_
 
 ## QTI converter
 To convert lesson to QTI package run converter with the command:
