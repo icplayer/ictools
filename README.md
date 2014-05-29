@@ -5,7 +5,7 @@ Python tools for processing icplayer files. Contains the following packages:
 * icplayer to [epub3](http://idpf.org/epub/30) converter
 
 ## Installation
-* Download code using git or 'Download as zip' button
+* Download code using git or 'Download ZIP' button
 * Extract to folder _ictools_
 * Download SCORM package with lesson and extract it to folder _lesson_
 
