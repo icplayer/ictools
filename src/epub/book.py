@@ -16,14 +16,14 @@ TEMPLATES_DIR = os.path.join(os.path.dirname(__file__), 'templates/')
 def createBookFolders(rootFolder, lessonFolder, lesson):
     if os.path.exists(rootFolder):
         raise Exception("Director %s already exists" % rootFolder)
-    os.mkdir(rootFolder)
+    os.makedirs(rootFolder)
     createMimeTypeFile(rootFolder, 'application/epub+zip')
     createMetaInfFolder(rootFolder)
     contentFolder = createContentFolder(rootFolder)
-    createPackageDocument(contentFolder, lesson)
-    copyRuntime(contentFolder)
+    _copyRuntime(contentFolder)
     createCSSFiles(contentFolder, lesson)
-    createMediaFiles(contentFolder, lessonFolder)
+    _copyMediaFiles(contentFolder, lessonFolder)
+    createPackageDocument(contentFolder, lesson)
     createHtmlFiles(contentFolder, lesson)
     createTocFile(contentFolder, lesson)
 
@@ -38,7 +38,7 @@ def createMetaInfFolder(rootFolder):
     _writeTemplate(metaFolder + "/container.xml", 'container.xml', {})
 
 
-def copyRuntime(contentFolder):
+def _copyRuntime(contentFolder):
     shutil.copytree(TEMPLATES_DIR + 'icruntime', contentFolder + '/script')
 
 
@@ -94,7 +94,7 @@ def createCSSFiles(contentFolder, lesson):
     _writeTemplate(destFile, 'lesson.css', {'content':lesson.style})
 
 
-def createMediaFiles(contentFolder, lessonFolder):
+def _copyMediaFiles(contentFolder, lessonFolder):
     shutil.copytree(lessonFolder + '/resources', contentFolder + '/resources')
 
 
@@ -137,8 +137,8 @@ def makeDistribution(buildFolder, zipFilePath):
 
 
 if __name__ == '__main__':
-    buildFolder = os.path.join(os.path.dirname(__file__), '../../build/test')
-    distFilePath = os.path.join(os.path.dirname(__file__), '../../dist/test.epub')
+    buildFolder = os.path.join(os.path.dirname(__file__), '../../build/epub/lesson1')
+    distFilePath = os.path.join(os.path.dirname(__file__), '../../dist/lesson1.epub')
     lessonFolder = os.path.join(os.path.dirname(__file__), '../../mauthor/lesson1')
     lesson = Lesson(lessonFolder + '/pages/main.xml')
     cleanBookFolders(buildFolder)
