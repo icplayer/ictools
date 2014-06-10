@@ -39,7 +39,7 @@ def createMetaInfFolder(rootFolder):
 
 
 def _copyRuntime(contentFolder):
-    shutil.copytree(TEMPLATES_DIR + 'icruntime', contentFolder + '/script')
+    shutil.copytree(TEMPLATES_DIR + 'script', contentFolder + '/script')
 
 
 def _writeTemplate(destFilename, templateName, params):
