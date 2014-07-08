@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interactiveContent name="Lesson 1">
+	<addons>
+	</addons>
+	<style>
+	</style>
+
+	<pages>
+		<page href="page1.xml" id="aecOAT" name="Page 1" reportable="true"/>
+	</pages>
+
+	<assets>
+	</assets>
+</interactiveContent>

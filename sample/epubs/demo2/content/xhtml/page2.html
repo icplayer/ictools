@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/sandbox.css" />
+        
+		<script src="../script/jquery-1.7.1.min.js"></script>
+        <script src="../script/eventbus.js"></script>
+        <script src="../script/playercontroller.js"></script>
+        <script src="../script/icplayer.js"></script>
+		<script src="../script/modules/libs/textparser.js"></script>       
+        
+        <!-- Include addons  --> 
+        <script src="../script/modules/puzzle/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../script/modules/puzzle/style.css" />        
+        <script src="../script/modules/check/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../script/modules/check/style.css" />
+    </head>
+    <body class="reflow">
+        <h3>Puzzle</h3>
+		<div id="puzzle1" module="Puzzle" style="">
+			<model>
+				<property name="Width" value="640"/>
+				<property name="Height" value="480"/>
+				<property name="isVisible" value="true"/>
+				<property name="Columns" value="4"/>
+				<property name="Rows" value="4"/>
+				<property name="Image" value="../images/golden.jpg" />
+			</model>
+			<div class="puzzle-container">
+			    <div>
+			        <img alt="Image" src="" style="visibility: hidden" />
+			    </div>
+			</div>
+		</div>
+    </body>
+</html>

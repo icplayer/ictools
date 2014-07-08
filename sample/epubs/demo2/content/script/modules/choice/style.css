@@ -1,0 +1,29 @@
+.ic_moption{
+	padding-left:20px;
+	background-repeat:no-repeat;
+	background-position:left center; 
+	cursor: pointer;
+}
+
+.ic_moption-correct{
+	background-image:url('images/correct.png');
+}
+
+.ic_moption-wrong{
+	background-image:url('images/wrong.png');
+}
+
+.ic_soption{
+	padding-left:20px;
+	background-repeat:no-repeat;
+	background-position:left center; 
+	cursor: pointer;
+}
+
+.ic_soption-correct{
+	background-image:url('images/correct.png');
+}
+
+.ic_soption-wrong{
+	background-image:url('images/wrong.png');
+}

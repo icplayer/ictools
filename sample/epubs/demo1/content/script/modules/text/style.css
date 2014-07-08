@@ -1,0 +1,19 @@
+.ic_gap{}
+.ic_gap-correct{
+	padding-left:16px;
+	background-image:url('images/correct.png');
+	background-repeat:no-repeat;
+}
+.ic_gap-wrong{
+	padding-left:16px;
+	background-image:url('images/wrong.png');
+	background-repeat:no-repeat;
+}
+
+.ic_inlineChoice{}
+.ic_inlineChoice-correct{
+	border: 2px solid green;
+}
+.ic_inlineChoice-wrong{
+	border: 2px solid red;
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/sandbox.css" />
+        
+		<script src="../script/jquery-2.1.1.min.js"></script>
+        <script src="../script/eventbus.js"></script>
+        <script src="../script/playercontroller.js"></script>
+        <script src="../script/icplayer.js"></script>
+		<script src="../script/modules/libs/textparser.js"></script>        
+        
+        <!-- Include addons  --> 
+        <script src="../script/modules/choice/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../script/modules/choice/style.css" />
+        <script src="../script/modules/check/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../script/modules/check/style.css" />
+    </head>
+    <body class="reflow">
+        <h3>Choice 1</h3>
+		<div module="Choice">
+			<model>
+				<property name="id" value="choice1"/>
+				<property name="isVisible" value="true"/>
+				<property name="isMulti" value="false"/>
+				<property name="options" type="list">
+					<items>
+						<item>
+							<property name="score" value="0"/>
+							<property name="text">This is wrong answer A</property>
+						</item>
+						<item>
+							<property name="score" value="1"/>
+							<property name="text">This is correct answer B</property>
+						</item>
+						<item>
+							<property name="score" value="0"/>
+							<property name="text">This is wrong answer C</property>
+						</item>
+					</items>
+				</property>
+			</model>
+		</div>
+		
+		<h3>Choice 2</h3>
+		<div module="Choice">
+			<model>
+				<property name="id" value="choice2"/>
+				<property name="isVisible" value="true"/>
+				<property name="isMulti" value="true"/>
+				<property name="options" type="list">
+					<items>
+						<item>
+							<property name="score" value="0"/>
+							<property name="text">This is wrong answer A</property>
+						</item>
+						<item>
+							<property name="score" value="1"/>
+							<property name="text">This is correct answer B</property>
+						</item>
+						<item>
+							<property name="score" value="1"/>
+							<property name="text">This is correct answer C</property>
+						</item>
+					</items>
+				</property>
+			</model>
+		</div>
+		<div module="Check" class="ic_check">
+			<model>
+				<property name="isVisible" value="true"/>
+			</model>
+			<button>Check</button>
+		</div>
+    </body>
+</html>
